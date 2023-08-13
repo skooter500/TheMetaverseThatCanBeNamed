@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/wahooney.itch.io/green_grid_triplanar.tres" type="Material" id=1]
 [ext_resource path="res://behaviors/root.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" type="PackedScene" id=5]
 [ext_resource path="res://behaviors/Dodecahedron.tscn" type="PackedScene" id=6]
+[ext_resource path="res://behaviors/School.gd" type="Script" id=7]
+[ext_resource path="res://behaviors/TrailFish.tscn" type="PackedScene" id=8]
 [ext_resource path="res://behaviors/Tank Material.tres" type="Material" id=9]
 [ext_resource path="res://addons/godot-xr-tools/player/player_body.tscn" type="PackedScene" id=10]
 [ext_resource path="res://behaviors/Constrain.gd" type="Script" id=11]
@@ -207,6 +209,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.13334, -11.8629, -33.382 )
 [node name="RightHand" parent="Player/Camera/FPController/RightHandController" index="0" instance=ExtResource( 5 )]
 
 [node name="PlayerBody" parent="Player/Camera/FPController" instance=ExtResource( 10 )]
+
+[node name="School" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0 )
+script = ExtResource( 7 )
+fish_scene = ExtResource( 8 )
+count = 20
+radius = 50
+neighbor_distance = 25
+max_neighbors = 5
+cell_size = 20
+grid_size = 1000
+center_path = NodePath(".")
 
 [connection signal="body_entered" from="creature/tail/Pod" to="creature/Controller" method="_on_Pod_body_entered"]
 

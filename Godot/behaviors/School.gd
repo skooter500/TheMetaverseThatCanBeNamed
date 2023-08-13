@@ -65,7 +65,7 @@ func _ready():
 	var p = cell_to_position(cell)
 	for i in count:
 		var fish = fish_scene.instance()		
-		var pos = Utils.random_point_in_unit_sphere() * radius
+		var pos = center.global_transform.origin + Utils.random_point_in_unit_sphere() * radius
 		add_child(fish)
 		fish.global_transform.origin = pos
 		fish.global_transform.basis = Basis(Vector3.UP, rand_range(0, PI * 2.0))

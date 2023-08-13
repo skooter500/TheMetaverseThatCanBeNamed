@@ -20,7 +20,8 @@ func _ready():
 	boid_player = get_node(boid_player_path)
 	match mode:
 		Mode.Free:
-			player.can_move = true
+			# player.can_move = true
+			pass
 		Mode.Follow:
 			player.can_move = false
 			boid_player.global_transform.origin = player.transform.origin

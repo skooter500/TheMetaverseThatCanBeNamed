@@ -58,3 +58,4 @@ draw_gizmos = false
 [node name="Constrain" type="Node" parent="."]
 script = ExtResource( 6 )
 draw_gizmos = false
+radius = 50.0

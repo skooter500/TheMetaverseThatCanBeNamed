@@ -54,13 +54,11 @@ environment = SubResource( 6 )
 far = 10000.0
 script = ExtResource( 6 )
 speed = 30.0
-move = true
 
 [node name="Listener" type="Listener" parent="Camera"]
 
 [node name="Control" type="Node" parent="Camera"]
 script = ExtResource( 3 )
-boid_camera_path = NodePath("../../camera follower")
 boid_path = NodePath("../../Fish/Boid")
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
