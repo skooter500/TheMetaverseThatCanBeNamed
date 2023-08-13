@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/godot-openxr/scenes/first_person_controller_vr.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/godot-xr-tools/player/player_body.tscn" type="PackedScene" id=7]
+[ext_resource path="res://addons/godot-xr-tools/functions/movement_direct.tscn" type="PackedScene" id=9]
+[ext_resource path="res://addons/godot-xr-tools/functions/function_teleport.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/wahooney.itch.io/green_grid_triplanar.tres" type="Material" id=12]
+[ext_resource path="res://behaviors/root.gd" type="Script" id=17]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 200, 200 )
+
+[sub_resource type="PlaneShape" id=2]
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 17 )
+
+[node name="FPController" parent="." instance=ExtResource( 6 )]
+
+[node name="ARVRCamera" parent="FPController" index="1"]
+far = 1000.0
+
+[node name="LeftHand" parent="FPController/LeftHandController" index="0" instance=ExtResource( 3 )]
+
+[node name="FunctionTeleport" parent="FPController/LeftHandController" index="1" instance=ExtResource( 10 )]
+
+[node name="RightHand" parent="FPController/RightHandController" index="0" instance=ExtResource( 2 )]
+
+[node name="MovementDirect" parent="FPController/RightHandController" index="1" instance=ExtResource( 9 )]
+enabled = true
+order = 10
+max_speed = 10.0
+strafe = false
+
+[node name="PlayerBody" parent="FPController" instance=ExtResource( 7 )]
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
+mesh = SubResource( 1 )
+material/0 = ExtResource( 12 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 500, 0, 0, 0, 1, 0, 0, 0, 500, 0, 0, 0 )
+shape = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12.0512, 0.23691 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="DirectionalLight"]
+transform = Transform( 0.646177, 0.763187, 2.01452e-08, 6.97809e-09, -3.23043e-08, 1, 0.763187, -0.646177, -2.61999e-08, 0, 12.0512, 0.23691 )
+
+[editable path="FPController"]
