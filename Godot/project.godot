@@ -135,6 +135,11 @@ _global_script_classes=[ {
 "path": "res://behaviors/Separation.gd"
 }, {
 "base": "Node",
+"class": "SkeletonSpineAnimator",
+"language": "GDScript",
+"path": "res://SkeletonSpineAnimator.gd"
+}, {
+"base": "Node",
 "class": "SpineAnimator",
 "language": "GDScript",
 "path": "res://behaviors/SpineAnimator.gd"
@@ -495,6 +500,7 @@ _global_script_class_icons={
 "School": "",
 "Seek": "",
 "Separation": "",
+"SkeletonSpineAnimator": "",
 "SpineAnimator": "",
 "State": "",
 "StateMachine": "",
@@ -566,8 +572,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GodotBoids"
-run/main_scene="res://behaviors/take_control.tscn"
+config/name="The Metaverse That Can Be Named"
+run/main_scene="res://Basic Scene.tscn"
 config/icon="res://behaviors/icon.png"
 
 [autoload]

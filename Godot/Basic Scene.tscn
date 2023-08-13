@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/wahooney.itch.io/green_grid_triplanar.tres" type="Material" id=1]
 [ext_resource path="res://behaviors/root.gd" type="Script" id=2]
@@ -6,8 +6,6 @@
 [ext_resource path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" type="PackedScene" id=5]
 [ext_resource path="res://behaviors/Dodecahedron.tscn" type="PackedScene" id=6]
-[ext_resource path="res://addons/godot-xr-tools/functions/movement_direct.tscn" type="PackedScene" id=7]
-[ext_resource path="res://addons/godot-xr-tools/functions/function_teleport.tscn" type="PackedScene" id=8]
 [ext_resource path="res://behaviors/Tank Material.tres" type="Material" id=9]
 [ext_resource path="res://addons/godot-xr-tools/player/player_body.tscn" type="PackedScene" id=10]
 [ext_resource path="res://behaviors/Constrain.gd" type="Script" id=11]
@@ -73,6 +71,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12.0
 transform = Transform( 0.646177, 0.763187, 2.01452e-08, 6.97809e-09, -3.23043e-08, 1, 0.763187, -0.646177, -2.61999e-08, 0, 12.0512, 0.23691 )
 
 [node name="creature" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.6152, 0 )
 
 [node name="Controller" type="Node" parent="creature"]
 script = ExtResource( 18 )
@@ -203,20 +202,9 @@ boid_path = NodePath("../../../creature/boid")
 [node name="FPController" parent="Player/Camera" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.13334, -11.8629, -33.382 )
 
-[node name="ARVRCamera" parent="Player/Camera/FPController" index="1"]
-far = 1000.0
-
 [node name="LeftHand" parent="Player/Camera/FPController/LeftHandController" index="0" instance=ExtResource( 4 )]
 
-[node name="FunctionTeleport" parent="Player/Camera/FPController/LeftHandController" index="1" instance=ExtResource( 8 )]
-
 [node name="RightHand" parent="Player/Camera/FPController/RightHandController" index="0" instance=ExtResource( 5 )]
-
-[node name="MovementDirect" parent="Player/Camera/FPController/RightHandController" index="1" instance=ExtResource( 7 )]
-enabled = true
-order = 10
-max_speed = 10.0
-strafe = false
 
 [node name="PlayerBody" parent="Player/Camera/FPController" instance=ExtResource( 10 )]
 
