@@ -301,6 +301,7 @@ center_path = NodePath(".")
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 42.532, -17.1076, 13.487 )
 
 [node name="Icosphere" parent="sphere_world" index="0"]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -0.00893784, -0.0734528, -0.0449371 )
 material/0 = SubResource( 18 )
 
 [connection signal="body_entered" from="creature/tail/Pod" to="creature/Controller" method="_on_Pod_body_entered"]
