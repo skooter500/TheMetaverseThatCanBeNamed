@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/wahooney.itch.io/green_grid_triplanar.tres" type="Material" id=1]
 [ext_resource path="res://behaviors/root.gd" type="Script" id=2]
@@ -21,8 +21,6 @@
 [ext_resource path="res://behaviors/PlayerSteering.gd" type="Script" id=19]
 [ext_resource path="res://behaviors/CameraController.gd" type="Script" id=20]
 [ext_resource path="res://behaviors/FPController.gd" type="Script" id=21]
-[ext_resource path="res://sounds/whale_talk.mp3" type="AudioStream" id=22]
-[ext_resource path="res://behaviors/SceneSwitcher.tscn" type="PackedScene" id=23]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 200, 200 )
@@ -55,14 +53,8 @@ background_mode = 1
 ambient_light_color = Color( 0.392157, 0.392157, 0.392157, 1 )
 ambient_light_energy = 2.0
 
-[sub_resource type="CapsuleShape" id=14]
-radius = 0.2
-height = 1.4
-
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 2 )
-
-[node name="SceneSwitcher" parent="." instance=ExtResource( 23 )]
 
 [node name="StaticBody" type="StaticBody" parent="."]
 
@@ -138,11 +130,6 @@ weight = 15.0
 draw_gizmos = false
 enabled = false
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="creature/boid"]
-stream = ExtResource( 22 )
-unit_db = 31.15
-autoplay = true
-
 [node name="body1" type="KinematicBody" parent="creature"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9 )
 
@@ -199,18 +186,6 @@ speed = 1.0
 [node name="CollisionShape" type="CollisionShape" parent="creature/tail/Pod"]
 shape = SubResource( 11 )
 
-[node name="School" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
-script = ExtResource( 7 )
-fish_scene = ExtResource( 8 )
-count = 20
-radius = 50
-neighbor_distance = 25
-max_neighbors = 5
-cell_size = 20
-grid_size = 1000
-center_path = NodePath(".")
-
 [node name="Player" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.13334, 11.8629, 33.382 )
 script = ExtResource( 21 )
@@ -239,9 +214,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.13334, -11.8629, -33.382 )
 
 [node name="PlayerBody" parent="Player/Camera/FPController" instance=ExtResource( 10 )]
 
-[node name="CollisionShape" type="CollisionShape" parent="Player/Camera/FPController/PlayerBody"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.8, 0 )
-shape = SubResource( 14 )
+[node name="School" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+script = ExtResource( 7 )
+fish_scene = ExtResource( 8 )
+count = 20
+radius = 50
+neighbor_distance = 25
+max_neighbors = 5
+cell_size = 20
+grid_size = 1000
+center_path = NodePath(".")
 
 [connection signal="body_entered" from="creature/tail/Pod" to="creature/Controller" method="_on_Pod_body_entered"]
 

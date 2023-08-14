@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=11 format=2]
+[gd_resource type="AudioBusLayout" load_steps=10 format=2]
 
 [sub_resource type="AudioEffectPitchShift" id=1]
 resource_name = "PitchShift"
@@ -45,10 +45,6 @@ resource_name = "Distortion"
 [sub_resource type="AudioEffectDelay" id=10]
 resource_name = "Delay"
 
-[sub_resource type="AudioEffectHighPassFilter" id=11]
-resource_name = "HighPassFilter"
-cutoff_hz = 1000.0
-
 [resource]
 bus/0/volume_db = 6.02
 bus/0/effect/0/effect = SubResource( 1 )
@@ -69,5 +65,3 @@ bus/0/effect/7/effect = SubResource( 9 )
 bus/0/effect/7/enabled = false
 bus/0/effect/8/effect = SubResource( 10 )
 bus/0/effect/8/enabled = true
-bus/0/effect/9/effect = SubResource( 11 )
-bus/0/effect/9/enabled = true

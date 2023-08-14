@@ -19,9 +19,6 @@ script = ExtResource( 17 )
 
 [node name="FPController" parent="." instance=ExtResource( 6 )]
 
-[node name="ARVRCamera" parent="FPController" index="1"]
-far = 1000.0
-
 [node name="LeftHand" parent="FPController/LeftHandController" index="0" instance=ExtResource( 3 )]
 
 [node name="FunctionTeleport" parent="FPController/LeftHandController" index="1" instance=ExtResource( 10 )]
