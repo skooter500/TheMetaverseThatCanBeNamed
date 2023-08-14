@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://assets/wahooney.itch.io/green_grid_triplanar.tres" type="Material" id=1]
 [ext_resource path="res://behaviors/root.gd" type="Script" id=2]
@@ -23,6 +23,22 @@
 [ext_resource path="res://behaviors/FPController.gd" type="Script" id=21]
 [ext_resource path="res://sounds/whale_talk.mp3" type="AudioStream" id=22]
 [ext_resource path="res://behaviors/SceneSwitcher.tscn" type="PackedScene" id=23]
+[ext_resource path="res://shaders/color_shader.tres" type="Material" id=24]
+[ext_resource path="res://Models/sphere_world.glb" type="PackedScene" id=25]
+
+[sub_resource type="CubeMesh" id=15]
+size = Vector3( 10, 10, 10 )
+
+[sub_resource type="SphereShape" id=12]
+
+[sub_resource type="Environment" id=13]
+background_mode = 1
+ambient_light_color = Color( 0.392157, 0.392157, 0.392157, 1 )
+ambient_light_energy = 2.0
+
+[sub_resource type="CapsuleShape" id=14]
+radius = 0.2
+height = 1.4
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 200, 200 )
@@ -48,19 +64,89 @@ size = Vector2( 200, 200 )
 [sub_resource type="SphereShape" id=11]
 radius = 3.0
 
-[sub_resource type="SphereShape" id=12]
+[sub_resource type="VisualShaderNodeColorUniform" id=16]
+output_port_for_preview = 0
+uniform_name = "World_Color"
+default_value_enabled = true
+default_value = Color( 0.192261, 0.984375, 0, 1 )
 
-[sub_resource type="Environment" id=13]
-background_mode = 1
-ambient_light_color = Color( 0.392157, 0.392157, 0.392157, 1 )
-ambient_light_energy = 2.0
+[sub_resource type="VisualShader" id=17]
+code = "shader_type spatial;
+render_mode specular_schlick_ggx, async_visible;
 
-[sub_resource type="CapsuleShape" id=14]
-radius = 0.2
-height = 1.4
+uniform vec4 World_Color : hint_color = vec4(0.192261, 0.984375, 0.000000, 1.000000);
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// ColorUniform:2
+	vec3 n_out2p0 = World_Color.rgb;
+	float n_out2p1 = World_Color.a;
+
+// Output:0
+	ALBEDO = n_out2p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+nodes/fragment/0/position = Vector2( 520, 60 )
+nodes/fragment/2/node = SubResource( 16 )
+nodes/fragment/2/position = Vector2( 0, 120 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 0, 0 )
+
+[sub_resource type="ShaderMaterial" id=18]
+shader = SubResource( 17 )
+shader_param/World_Color = Color( 0.192261, 0.984375, 0, 1 )
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2733, 18.3766, -3.80475 )
+mesh = SubResource( 15 )
+material/0 = ExtResource( 24 )
+
+[node name="Player" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.13334, 11.8629, 33.382 )
+script = ExtResource( 21 )
+speed = 10.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Player"]
+shape = SubResource( 12 )
+
+[node name="Camera" type="Camera" parent="Player"]
+environment = SubResource( 13 )
+far = 10000.0
+
+[node name="Camera Controller" type="Node" parent="Player/Camera"]
+script = ExtResource( 20 )
+boid_player_path = NodePath("../../../camera follower")
+boid_path = NodePath("../../../creature/boid")
+
+[node name="FPController" parent="Player/Camera" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.13334, -11.8629, -33.382 )
+
+[node name="Listener" type="Listener" parent="Player/Camera/FPController/ARVRCamera" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.13334, 10.0629, 33.382 )
+
+[node name="LeftHand" parent="Player/Camera/FPController/LeftHandController" index="0" instance=ExtResource( 4 )]
+
+[node name="RightHand" parent="Player/Camera/FPController/RightHandController" index="0" instance=ExtResource( 5 )]
+
+[node name="PlayerBody" parent="Player/Camera/FPController" instance=ExtResource( 10 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="Player/Camera/FPController/PlayerBody"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.8, 0 )
+shape = SubResource( 14 )
 
 [node name="SceneSwitcher" parent="." instance=ExtResource( 23 )]
 
@@ -200,7 +286,7 @@ speed = 1.0
 shape = SubResource( 11 )
 
 [node name="School" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.7187, 0 )
 script = ExtResource( 7 )
 fish_scene = ExtResource( 8 )
 count = 20
@@ -211,38 +297,13 @@ cell_size = 20
 grid_size = 1000
 center_path = NodePath(".")
 
-[node name="Player" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.13334, 11.8629, 33.382 )
-script = ExtResource( 21 )
-speed = 10.0
+[node name="sphere_world" parent="." instance=ExtResource( 25 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 42.532, -17.1076, 13.487 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Player"]
-shape = SubResource( 12 )
-
-[node name="Camera" type="Camera" parent="Player"]
-environment = SubResource( 13 )
-far = 10000.0
-
-[node name="Listener" type="Listener" parent="Player/Camera"]
-
-[node name="Camera Controller" type="Node" parent="Player/Camera"]
-script = ExtResource( 20 )
-boid_player_path = NodePath("../../../camera follower")
-boid_path = NodePath("../../../creature/boid")
-
-[node name="FPController" parent="Player/Camera" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.13334, -11.8629, -33.382 )
-
-[node name="LeftHand" parent="Player/Camera/FPController/LeftHandController" index="0" instance=ExtResource( 4 )]
-
-[node name="RightHand" parent="Player/Camera/FPController/RightHandController" index="0" instance=ExtResource( 5 )]
-
-[node name="PlayerBody" parent="Player/Camera/FPController" instance=ExtResource( 10 )]
-
-[node name="CollisionShape" type="CollisionShape" parent="Player/Camera/FPController/PlayerBody"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.8, 0 )
-shape = SubResource( 14 )
+[node name="Icosphere" parent="sphere_world" index="0"]
+material/0 = SubResource( 18 )
 
 [connection signal="body_entered" from="creature/tail/Pod" to="creature/Controller" method="_on_Pod_body_entered"]
 
 [editable path="Player/Camera/FPController"]
+[editable path="sphere_world"]
