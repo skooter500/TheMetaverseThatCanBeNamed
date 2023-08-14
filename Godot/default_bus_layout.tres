@@ -1,0 +1,73 @@
+[gd_resource type="AudioBusLayout" load_steps=11 format=2]
+
+[sub_resource type="AudioEffectPitchShift" id=1]
+resource_name = "PitchShift"
+pitch_scale = 7.05
+
+[sub_resource type="AudioEffectChorus" id=3]
+resource_name = "Chorus"
+voice_count = 4
+dry = 0.0
+wet = 1.0
+voice/3/delay_ms = 12.0
+voice/3/rate_hz = 1.0
+voice/3/depth_ms = 0.0
+voice/3/level_db = 0.0
+voice/3/cutoff_hz = 16000.0
+voice/3/pan = 0.0
+voice/4/delay_ms = 12.0
+voice/4/rate_hz = 1.0
+voice/4/depth_ms = 0.0
+voice/4/level_db = 0.0
+voice/4/cutoff_hz = 16000.0
+voice/4/pan = 0.0
+
+[sub_resource type="AudioEffectAmplify" id=4]
+resource_name = "Amplify"
+volume_db = 1.75
+
+[sub_resource type="AudioEffectPitchShift" id=5]
+resource_name = "PitchShift"
+pitch_scale = 0.86
+
+[sub_resource type="AudioEffectReverb" id=6]
+resource_name = "Reverb"
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id=7]
+resource_name = "SpectrumAnalyzer"
+
+[sub_resource type="AudioEffectPhaser" id=8]
+resource_name = "Phaser"
+
+[sub_resource type="AudioEffectDistortion" id=9]
+resource_name = "Distortion"
+
+[sub_resource type="AudioEffectDelay" id=10]
+resource_name = "Delay"
+
+[sub_resource type="AudioEffectHighPassFilter" id=11]
+resource_name = "HighPassFilter"
+cutoff_hz = 1000.0
+
+[resource]
+bus/0/volume_db = 6.02
+bus/0/effect/0/effect = SubResource( 1 )
+bus/0/effect/0/enabled = false
+bus/0/effect/1/effect = SubResource( 3 )
+bus/0/effect/1/enabled = true
+bus/0/effect/2/effect = SubResource( 4 )
+bus/0/effect/2/enabled = true
+bus/0/effect/3/effect = SubResource( 5 )
+bus/0/effect/3/enabled = true
+bus/0/effect/4/effect = SubResource( 6 )
+bus/0/effect/4/enabled = false
+bus/0/effect/5/effect = SubResource( 7 )
+bus/0/effect/5/enabled = false
+bus/0/effect/6/effect = SubResource( 8 )
+bus/0/effect/6/enabled = false
+bus/0/effect/7/effect = SubResource( 9 )
+bus/0/effect/7/enabled = false
+bus/0/effect/8/effect = SubResource( 10 )
+bus/0/effect/8/enabled = true
+bus/0/effect/9/effect = SubResource( 11 )
+bus/0/effect/9/enabled = true

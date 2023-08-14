@@ -1,15 +1,11 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/wahooney.itch.io/green_grid_triplanar.tres" type="Material" id=1]
 [ext_resource path="res://behaviors/root.gd" type="Script" id=2]
-[ext_resource path="res://addons/godot-openxr/scenes/first_person_controller_vr.tscn" type="PackedScene" id=3]
-[ext_resource path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" type="PackedScene" id=4]
-[ext_resource path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" type="PackedScene" id=5]
 [ext_resource path="res://behaviors/Dodecahedron.tscn" type="PackedScene" id=6]
 [ext_resource path="res://behaviors/School.gd" type="Script" id=7]
 [ext_resource path="res://behaviors/TrailFish.tscn" type="PackedScene" id=8]
 [ext_resource path="res://behaviors/Tank Material.tres" type="Material" id=9]
-[ext_resource path="res://addons/godot-xr-tools/player/player_body.tscn" type="PackedScene" id=10]
 [ext_resource path="res://behaviors/Constrain.gd" type="Script" id=11]
 [ext_resource path="res://behaviors/Boid.gd" type="Script" id=12]
 [ext_resource path="res://behaviors/Harmonic.gd" type="Script" id=13]
@@ -19,8 +15,9 @@
 [ext_resource path="res://behaviors/Rotate.gd" type="Script" id=17]
 [ext_resource path="res://behaviors/CreatureController.gd" type="Script" id=18]
 [ext_resource path="res://behaviors/PlayerSteering.gd" type="Script" id=19]
-[ext_resource path="res://behaviors/CameraController.gd" type="Script" id=20]
 [ext_resource path="res://behaviors/FPController.gd" type="Script" id=21]
+[ext_resource path="res://sounds/whale_talk.mp3" type="AudioStream" id=22]
+[ext_resource path="res://behaviors/SceneSwitcher.tscn" type="PackedScene" id=23]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 200, 200 )
@@ -48,13 +45,10 @@ radius = 3.0
 
 [sub_resource type="SphereShape" id=12]
 
-[sub_resource type="Environment" id=13]
-background_mode = 1
-ambient_light_color = Color( 0.392157, 0.392157, 0.392157, 1 )
-ambient_light_energy = 2.0
-
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 2 )
+
+[node name="SceneSwitcher" parent="." instance=ExtResource( 23 )]
 
 [node name="StaticBody" type="StaticBody" parent="."]
 
@@ -130,6 +124,11 @@ weight = 15.0
 draw_gizmos = false
 enabled = false
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="creature/boid"]
+stream = ExtResource( 22 )
+unit_db = 31.15
+autoplay = true
+
 [node name="body1" type="KinematicBody" parent="creature"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9 )
 
@@ -187,32 +186,12 @@ speed = 1.0
 shape = SubResource( 11 )
 
 [node name="Player" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.13334, 11.8629, 33.382 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.76065, 11.8629, 12.7691 )
 script = ExtResource( 21 )
 speed = 10.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
 shape = SubResource( 12 )
-
-[node name="Camera" type="Camera" parent="Player"]
-environment = SubResource( 13 )
-far = 10000.0
-
-[node name="Listener" type="Listener" parent="Player/Camera"]
-
-[node name="Camera Controller" type="Node" parent="Player/Camera"]
-script = ExtResource( 20 )
-boid_player_path = NodePath("../../../camera follower")
-boid_path = NodePath("../../../creature/boid")
-
-[node name="FPController" parent="Player/Camera" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.13334, -11.8629, -33.382 )
-
-[node name="LeftHand" parent="Player/Camera/FPController/LeftHandController" index="0" instance=ExtResource( 4 )]
-
-[node name="RightHand" parent="Player/Camera/FPController/RightHandController" index="0" instance=ExtResource( 5 )]
-
-[node name="PlayerBody" parent="Player/Camera/FPController" instance=ExtResource( 10 )]
 
 [node name="School" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
@@ -227,5 +206,3 @@ grid_size = 1000
 center_path = NodePath(".")
 
 [connection signal="body_entered" from="creature/tail/Pod" to="creature/Controller" method="_on_Pod_body_entered"]
-
-[editable path="Player/Camera/FPController"]

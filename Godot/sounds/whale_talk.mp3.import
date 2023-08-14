@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/whale_talk.mp3-ae050b64ec45c38e3bd265ebd20b85a8.mp3str"
+
+[deps]
+
+source_file="res://sounds/whale_talk.mp3"
+dest_files=[ "res://.import/whale_talk.mp3-ae050b64ec45c38e3bd265ebd20b85a8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
