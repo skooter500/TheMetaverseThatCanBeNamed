@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://behaviors/Cohesion.gd" type="Script" id=1]
 [ext_resource path="res://behaviors/Alignment.gd" type="Script" id=2]
@@ -9,15 +9,32 @@
 [ext_resource path="res://behaviors/Constrain.gd" type="Script" id=7]
 [ext_resource path="res://behaviors/Wander.gd" type="Script" id=8]
 [ext_resource path="res://addons/Trail/trail_3d.gd" type="Script" id=9]
-[ext_resource path="res://behaviors/CobraTrail.tres" type="Material" id=11]
 
 [sub_resource type="PrismMesh" id=1]
 
 [sub_resource type="BoxShape" id=2]
 
-[sub_resource type="Curve" id=3]
-bake_resolution = 10
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="Shader" id=3]
+code = "shader_type spatial;
+
+uniform float emission_strength = 1.0;
+
+void fragment(){
+	
+	ALBEDO = vec3(0.0);
+	EMISSION = COLOR.rgb*emission_strength;
+	ALPHA = COLOR.a;
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/emission_strength = 2.0
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.990476, 0.0272727 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=5]
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 0 )
 
 [node name="Boid" type="KinematicBody"]
 script = ExtResource( 6 )
@@ -37,7 +54,7 @@ shape = SubResource( 2 )
 
 [node name="Avoidance" type="Node" parent="."]
 script = ExtResource( 5 )
-weight = 2.0
+weight = 50.0
 draw_gizmos = false
 feeler_angle = 60
 feeler_length = 30
@@ -66,11 +83,11 @@ script = ExtResource( 7 )
 draw_gizmos = false
 radius = 50.0
 
-[node name="Trail" type="ImmediateGeometry" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.0023 )
-material_override = ExtResource( 11 )
+[node name="trail" type="ImmediateGeometry" parent="."]
+material_override = SubResource( 4 )
 script = ExtResource( 9 )
-segments = 10
-lifetime = 10000.0
-tiling = 1
-width_profile = SubResource( 3 )
+segments = 50
+lifetime = 1000.0
+base_width = 1.0
+width_profile = SubResource( 6 )
+color_gradient = SubResource( 5 )

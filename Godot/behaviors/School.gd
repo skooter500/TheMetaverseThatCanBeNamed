@@ -9,6 +9,8 @@ export var radius = 100
 export var neighbor_distance = 20
 export var max_neighbors = 10
 
+export var draw_gizmos = false
+
 var boids = []
 
 export var cell_size = 10
@@ -52,8 +54,8 @@ func partition():
 		cells[key].push_back(boid)
 
 func _process(delta):
-	#if draw_gizmos:
-	draw_gizmos()
+	if draw_gizmos:
+		draw_gizmos()
 	if partition:
 		partition()
 
@@ -64,7 +66,9 @@ func _ready():
 	var cell = position_to_cell(Vector3(-60, 59, 80))
 	var p = cell_to_position(cell)
 	for i in count:
-		var fish = fish_scene.instance()		
+		var fish = fish_scene.instance()	
+		var top_hemi = 	Utils.random_point_in_unit_sphere()
+		top_hemi.y = abs(top_hemi.y)
 		var pos = center.global_transform.origin + Utils.random_point_in_unit_sphere() * radius
 		add_child(fish)
 		fish.global_transform.origin = pos

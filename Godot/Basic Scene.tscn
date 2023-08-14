@@ -87,6 +87,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.5154 )
 script = ExtResource( 12 )
 max_force = 80
 damping = 0.3
+draw_gizmos = false
 
 [node name="MeshInstance" type="MeshInstance" parent="creature/boid"]
 transform = Transform( 1, 0, 0, 0, -8.74228e-08, -1, 0, 2, -4.37114e-08, 0, 0, 0 )
@@ -100,11 +101,13 @@ shape = SubResource( 4 )
 [node name="Avoidance" type="Node" parent="creature/boid"]
 script = ExtResource( 15 )
 weight = 10.0
+draw_gizmos = false
 feeler_length = 15
 
 [node name="Harmonic" type="Node" parent="creature/boid"]
 script = ExtResource( 13 )
 weight = 3.0
+draw_gizmos = false
 frequency = 0.5
 distance = 10
 axis = 1
@@ -112,6 +115,7 @@ axis = 1
 [node name="Constrain" type="Node" parent="creature/boid"]
 script = ExtResource( 11 )
 weight = 0.1
+draw_gizmos = false
 
 [node name="NoiseWander" type="Node" parent="creature/boid"]
 script = ExtResource( 16 )
@@ -211,7 +215,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.13334, -11.8629, -33.382 )
 [node name="PlayerBody" parent="Player/Camera/FPController" instance=ExtResource( 10 )]
 
 [node name="School" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
 script = ExtResource( 7 )
 fish_scene = ExtResource( 8 )
 count = 20
