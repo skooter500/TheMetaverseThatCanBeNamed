@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/coriolis.gltf-46d9da125ec11ef4028a793c4f484621.scn"
+path="res://.import/coriolis.gltf-5bb8968ed05bec1557b2f83192c2217c.scn"
 
 [deps]
 
-source_file="res://Models/coriolis_out/coriolis.gltf"
-dest_files=[ "res://.import/coriolis.gltf-46d9da125ec11ef4028a793c4f484621.scn" ]
+source_file="res://models/coriolis_out/coriolis.gltf"
+dest_files=[ "res://.import/coriolis.gltf-5bb8968ed05bec1557b2f83192c2217c.scn" ]
 
 [params]
 

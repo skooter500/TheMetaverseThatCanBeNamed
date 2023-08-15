@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/boa.gltf-db63562c8a1728aa412c977c127d38be.scn"
+path="res://.import/boa.gltf-fc645bd665e9cd9e1496ad74b167c3f0.scn"
 
 [deps]
 
-source_file="res://Models/boa_out/boa.gltf"
-dest_files=[ "res://.import/boa.gltf-db63562c8a1728aa412c977c127d38be.scn" ]
+source_file="res://models/boa_out/boa.gltf"
+dest_files=[ "res://.import/boa.gltf-fc645bd665e9cd9e1496ad74b167c3f0.scn" ]
 
 [params]
 

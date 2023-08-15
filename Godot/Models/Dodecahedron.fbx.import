@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/Dodecahedron.fbx-942bea31eed6b32036e44b903a81e4d1.scn"
+path="res://.import/Dodecahedron.fbx-13a7c4d389b799ab0e74441ef089ec50.scn"
 
 [deps]
 
-source_file="res://Models/Dodecahedron.fbx"
-dest_files=[ "res://.import/Dodecahedron.fbx-942bea31eed6b32036e44b903a81e4d1.scn" ]
+source_file="res://models/Dodecahedron.fbx"
+dest_files=[ "res://.import/Dodecahedron.fbx-13a7c4d389b799ab0e74441ef089ec50.scn" ]
 
 [params]
 

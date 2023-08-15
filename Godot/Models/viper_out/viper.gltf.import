@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/viper.gltf-47f672140ad1ad7ce85009680a551393.scn"
+path="res://.import/viper.gltf-594fa7845b8e673b02a96972b099566b.scn"
 
 [deps]
 
-source_file="res://Models/viper_out/viper.gltf"
-dest_files=[ "res://.import/viper.gltf-47f672140ad1ad7ce85009680a551393.scn" ]
+source_file="res://models/viper_out/viper.gltf"
+dest_files=[ "res://.import/viper.gltf-594fa7845b8e673b02a96972b099566b.scn" ]
 
 [params]
 

@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/cobramk1.gltf-2e1ec7bd7c190f2879cba9f6212bdacf.scn"
+path="res://.import/cobramk1.gltf-f6ed588d380203a4de93590765673bb5.scn"
 
 [deps]
 
-source_file="res://Models/cobramk1_out/cobramk1.gltf"
-dest_files=[ "res://.import/cobramk1.gltf-2e1ec7bd7c190f2879cba9f6212bdacf.scn" ]
+source_file="res://models/cobramk1_out/cobramk1.gltf"
+dest_files=[ "res://.import/cobramk1.gltf-f6ed588d380203a4de93590765673bb5.scn" ]
 
 [params]
 

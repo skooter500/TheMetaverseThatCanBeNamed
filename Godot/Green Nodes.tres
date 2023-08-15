@@ -1,0 +1,44 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[sub_resource type="VisualShaderNodeColorUniform" id=16]
+output_port_for_preview = 0
+uniform_name = "World_Color"
+default_value_enabled = true
+default_value = Color( 0.192261, 0.984375, 0, 1 )
+
+[sub_resource type="VisualShader" id=17]
+code = "shader_type spatial;
+render_mode specular_schlick_ggx, async_visible;
+
+uniform vec4 World_Color : hint_color = vec4(0.192261, 0.984375, 0.000000, 1.000000);
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// ColorUniform:2
+	vec3 n_out2p0 = World_Color.rgb;
+	float n_out2p1 = World_Color.a;
+
+// Output:0
+	ALBEDO = n_out2p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+nodes/fragment/0/position = Vector2( 520, 60 )
+nodes/fragment/2/node = SubResource( 16 )
+nodes/fragment/2/position = Vector2( 0, 120 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 0, 0 )
+
+[resource]
+shader = SubResource( 17 )
+shader_param/World_Color = Color( 0.192261, 0.984375, 0, 1 )

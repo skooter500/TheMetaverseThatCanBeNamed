@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/anaconda.gltf-375b15cab9f068802b13b21d57b682a2.scn"
+path="res://.import/anaconda.gltf-0e92d6c532a49923612d519492bc37e5.scn"
 
 [deps]
 
-source_file="res://Models/anaconda_out/anaconda.gltf"
-dest_files=[ "res://.import/anaconda.gltf-375b15cab9f068802b13b21d57b682a2.scn" ]
+source_file="res://models/anaconda_out/anaconda.gltf"
+dest_files=[ "res://.import/anaconda.gltf-0e92d6c532a49923612d519492bc37e5.scn" ]
 
 [params]
 

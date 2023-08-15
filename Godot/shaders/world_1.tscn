@@ -1,0 +1,258 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://behaviors/Avoidance.gd" type="Script" id=1]
+[ext_resource path="res://behaviors/Boid.gd" type="Script" id=2]
+[ext_resource path="res://behaviors/CameraController.gd" type="Script" id=3]
+[ext_resource path="res://behaviors/Tank Material.tres" type="Material" id=4]
+[ext_resource path="res://assets/wahooney.itch.io/green_grid_triplanar.tres" type="Material" id=5]
+[ext_resource path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" type="PackedScene" id=7]
+[ext_resource path="res://addons/godot-xr-tools/player/player_body.tscn" type="PackedScene" id=8]
+[ext_resource path="res://behaviors/Dodecahedron.tscn" type="PackedScene" id=9]
+[ext_resource path="res://behaviors/TrailFish.tscn" type="PackedScene" id=10]
+[ext_resource path="res://addons/godot-openxr/scenes/first_person_controller_vr.tscn" type="PackedScene" id=11]
+[ext_resource path="res://behaviors/SceneSwitcher.tscn" type="PackedScene" id=12]
+[ext_resource path="res://behaviors/School.gd" type="Script" id=14]
+[ext_resource path="res://behaviors/root.gd" type="Script" id=15]
+[ext_resource path="res://behaviors/SpineAnimator.gd" type="Script" id=16]
+[ext_resource path="res://shaders/color_shader.tres" type="Material" id=17]
+[ext_resource path="res://behaviors/PlayerSteering.gd" type="Script" id=18]
+[ext_resource path="res://behaviors/FPController.gd" type="Script" id=19]
+[ext_resource path="res://behaviors/NoiseWander.gd" type="Script" id=20]
+[ext_resource path="res://behaviors/Constrain.gd" type="Script" id=21]
+[ext_resource path="res://behaviors/Rotate.gd" type="Script" id=22]
+[ext_resource path="res://behaviors/Harmonic.gd" type="Script" id=23]
+[ext_resource path="res://behaviors/CreatureController.gd" type="Script" id=24]
+[ext_resource path="res://sounds/whale_talk.mp3" type="AudioStream" id=25]
+
+[sub_resource type="CubeMesh" id=15]
+size = Vector3( 10, 10, 10 )
+
+[sub_resource type="SphereShape" id=12]
+
+[sub_resource type="Environment" id=13]
+background_mode = 1
+ambient_light_color = Color( 0.392157, 0.392157, 0.392157, 1 )
+ambient_light_energy = 2.0
+
+[sub_resource type="CapsuleShape" id=14]
+radius = 0.2
+height = 1.4
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 200, 200 )
+
+[sub_resource type="PlaneShape" id=2]
+
+[sub_resource type="PrismMesh" id=3]
+
+[sub_resource type="BoxShape" id=4]
+
+[sub_resource type="CubeMesh" id=5]
+
+[sub_resource type="BoxShape" id=6]
+
+[sub_resource type="BoxShape" id=7]
+
+[sub_resource type="BoxShape" id=8]
+
+[sub_resource type="PrismMesh" id=9]
+
+[sub_resource type="BoxShape" id=10]
+
+[sub_resource type="SphereShape" id=11]
+radius = 3.0
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 15 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2733, 18.3766, -3.80475 )
+mesh = SubResource( 15 )
+material/0 = ExtResource( 17 )
+
+[node name="Player" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.13334, 11.8629, 33.382 )
+script = ExtResource( 19 )
+speed = 10.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Player"]
+shape = SubResource( 12 )
+
+[node name="Camera" type="Camera" parent="Player"]
+environment = SubResource( 13 )
+far = 10000.0
+
+[node name="Camera Controller" type="Node" parent="Player/Camera"]
+script = ExtResource( 3 )
+boid_player_path = NodePath("../../../camera follower")
+boid_path = NodePath("../../../creature/boid")
+
+[node name="FPController" parent="Player/Camera" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.13334, -11.8629, -33.382 )
+
+[node name="Listener" type="Listener" parent="Player/Camera/FPController/ARVRCamera" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.13334, 10.0629, 33.382 )
+
+[node name="LeftHand" parent="Player/Camera/FPController/LeftHandController" index="0" instance=ExtResource( 7 )]
+
+[node name="RightHand" parent="Player/Camera/FPController/RightHandController" index="0" instance=ExtResource( 6 )]
+
+[node name="PlayerBody" parent="Player/Camera/FPController" instance=ExtResource( 8 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="Player/Camera/FPController/PlayerBody"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.8, 0 )
+shape = SubResource( 14 )
+
+[node name="SceneSwitcher" parent="." instance=ExtResource( 12 )]
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
+mesh = SubResource( 1 )
+material/0 = ExtResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 500, 0, 0, 0, 1, 0, 0, 0, 500, 0, 0, 0 )
+shape = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12.0512, 0.23691 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="DirectionalLight"]
+transform = Transform( 0.646177, 0.763187, 2.01452e-08, 6.97809e-09, -3.23043e-08, 1, 0.763187, -0.646177, -2.61999e-08, 0, 12.0512, 0.23691 )
+
+[node name="creature" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.6152, 0 )
+
+[node name="Controller" type="Node" parent="creature"]
+script = ExtResource( 24 )
+
+[node name="spineanimator" type="Node" parent="creature"]
+script = ExtResource( 16 )
+bonePaths = [ NodePath("../boid"), NodePath("../body1"), NodePath("../body2"), NodePath("../body3"), NodePath("../tail") ]
+
+[node name="boid" type="KinematicBody" parent="creature"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.5154 )
+script = ExtResource( 2 )
+max_force = 80
+damping = 0.3
+draw_gizmos = false
+
+[node name="MeshInstance" type="MeshInstance" parent="creature/boid"]
+transform = Transform( 1, 0, 0, 0, -8.74228e-08, -1, 0, 2, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 3 )
+skeleton = NodePath("../../..")
+material/0 = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="creature/boid"]
+shape = SubResource( 4 )
+
+[node name="Avoidance" type="Node" parent="creature/boid"]
+script = ExtResource( 1 )
+weight = 10.0
+draw_gizmos = false
+feeler_length = 15
+
+[node name="Harmonic" type="Node" parent="creature/boid"]
+script = ExtResource( 23 )
+weight = 3.0
+draw_gizmos = false
+frequency = 0.5
+distance = 10
+axis = 1
+
+[node name="Constrain" type="Node" parent="creature/boid"]
+script = ExtResource( 21 )
+weight = 0.1
+draw_gizmos = false
+
+[node name="NoiseWander" type="Node" parent="creature/boid"]
+script = ExtResource( 20 )
+draw_gizmos = false
+radius = 50.0
+amplitude = 90
+distance = 100
+
+[node name="UserSteering" type="Node" parent="creature/boid"]
+script = ExtResource( 18 )
+weight = 15.0
+draw_gizmos = false
+enabled = false
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="creature/boid"]
+stream = ExtResource( 25 )
+unit_db = 31.15
+autoplay = true
+
+[node name="body1" type="KinematicBody" parent="creature"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="creature/body1"]
+mesh = SubResource( 5 )
+skeleton = NodePath("../../..")
+material/0 = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="creature/body1"]
+shape = SubResource( 6 )
+
+[node name="body2" type="KinematicBody" parent="creature"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="creature/body2"]
+mesh = SubResource( 5 )
+skeleton = NodePath("../../..")
+material/0 = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="creature/body2"]
+shape = SubResource( 7 )
+
+[node name="body3" type="KinematicBody" parent="creature"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="creature/body3"]
+mesh = SubResource( 5 )
+skeleton = NodePath("../../..")
+material/0 = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="creature/body3"]
+shape = SubResource( 8 )
+
+[node name="tail" type="KinematicBody" parent="creature"]
+
+[node name="MeshInstance" type="MeshInstance" parent="creature/tail"]
+transform = Transform( 1, 0, 0, 0, -8.74228e-08, 1, 0, -2, -4.37114e-08, 0, 0, -0.504121 )
+mesh = SubResource( 9 )
+skeleton = NodePath("")
+material/0 = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="creature/tail"]
+shape = SubResource( 10 )
+disabled = true
+
+[node name="Pod" type="Area" parent="creature/tail"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -2 )
+
+[node name="Dodecahedron" parent="creature/tail/Pod" instance=ExtResource( 9 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.210667, 0 )
+script = ExtResource( 22 )
+speed = 1.0
+
+[node name="CollisionShape" type="CollisionShape" parent="creature/tail/Pod"]
+shape = SubResource( 11 )
+
+[node name="School" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.7187, 0 )
+script = ExtResource( 14 )
+fish_scene = ExtResource( 10 )
+count = 20
+radius = 50
+neighbor_distance = 25
+max_neighbors = 5
+cell_size = 20
+grid_size = 1000
+center_path = NodePath(".")
+
+[connection signal="body_entered" from="creature/tail/Pod" to="creature/Controller" method="_on_Pod_body_entered"]
+
+[editable path="Player/Camera/FPController"]

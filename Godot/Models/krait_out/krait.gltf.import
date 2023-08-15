@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/krait.gltf-91278adf47576e4ca37193b46982b00f.scn"
+path="res://.import/krait.gltf-4f14e37fb09a10f6501a68f6c4ae32c7.scn"
 
 [deps]
 
-source_file="res://Models/krait_out/krait.gltf"
-dest_files=[ "res://.import/krait.gltf-91278adf47576e4ca37193b46982b00f.scn" ]
+source_file="res://models/krait_out/krait.gltf"
+dest_files=[ "res://.import/krait.gltf-4f14e37fb09a10f6501a68f6c4ae32c7.scn" ]
 
 [params]
 

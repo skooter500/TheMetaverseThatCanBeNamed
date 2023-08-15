@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/ferdelance.gltf-bc0335bdb034d7f803f75667e2924761.scn"
+path="res://.import/ferdelance.gltf-87b60c5c31d22652c01da91e551a2f10.scn"
 
 [deps]
 
-source_file="res://Models/ferdelance_out/ferdelance.gltf"
-dest_files=[ "res://.import/ferdelance.gltf-bc0335bdb034d7f803f75667e2924761.scn" ]
+source_file="res://models/ferdelance_out/ferdelance.gltf"
+dest_files=[ "res://.import/ferdelance.gltf-87b60c5c31d22652c01da91e551a2f10.scn" ]
 
 [params]
 

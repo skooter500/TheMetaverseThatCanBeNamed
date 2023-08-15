@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/worlld1.glb-8df7f4fe0634cd7586adb75fb91dfacb.scn"
+path="res://.import/worlld1.glb-100043b5813e0ff5f0ef42c87aa22524.scn"
 
 [deps]
 
-source_file="res://Models/worlld1.glb"
-dest_files=[ "res://.import/worlld1.glb-8df7f4fe0634cd7586adb75fb91dfacb.scn" ]
+source_file="res://models/worlld1.glb"
+dest_files=[ "res://.import/worlld1.glb-100043b5813e0ff5f0ef42c87aa22524.scn" ]
 
 [params]
 

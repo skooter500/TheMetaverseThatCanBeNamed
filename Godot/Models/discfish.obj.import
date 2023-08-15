@@ -2,14 +2,14 @@
 
 importer="wavefront_obj"
 type="Mesh"
-path="res://.import/discfish.obj-cff51b13709f5bcc4b7737041d006e8b.mesh"
+path="res://.import/discfish.obj-cea0c0fd95d81611ce019059ef74a955.mesh"
 
 [deps]
 
-files=[ "res://.import/discfish.obj-cff51b13709f5bcc4b7737041d006e8b.mesh" ]
+files=[ "res://.import/discfish.obj-cea0c0fd95d81611ce019059ef74a955.mesh" ]
 
-source_file="res://Models/discfish.obj"
-dest_files=[ "res://.import/discfish.obj-cff51b13709f5bcc4b7737041d006e8b.mesh", "res://.import/discfish.obj-cff51b13709f5bcc4b7737041d006e8b.mesh" ]
+source_file="res://models/discfish.obj"
+dest_files=[ "res://.import/discfish.obj-cea0c0fd95d81611ce019059ef74a955.mesh", "res://.import/discfish.obj-cea0c0fd95d81611ce019059ef74a955.mesh" ]
 
 [params]
 

@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/adder.gltf-5d40f45bbfc4a28c892c2c981b0a2183.scn"
+path="res://.import/adder.gltf-0eb219a70052efb88b01477b79989b39.scn"
 
 [deps]
 
-source_file="res://Models/adder_out/adder.gltf"
-dest_files=[ "res://.import/adder.gltf-5d40f45bbfc4a28c892c2c981b0a2183.scn" ]
+source_file="res://models/adder_out/adder.gltf"
+dest_files=[ "res://.import/adder.gltf-0eb219a70052efb88b01477b79989b39.scn" ]
 
 [params]
 

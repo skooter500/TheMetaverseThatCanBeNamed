@@ -2,14 +2,14 @@
 
 importer="wavefront_obj"
 type="Mesh"
-path="res://.import/hammerfish2.obj-00acda5ecde3cb5d02f197dae2eb3eb3.mesh"
+path="res://.import/hammerfish2.obj-eff65f1a17e47eabdbdaa98d2f31f712.mesh"
 
 [deps]
 
-files=[ "res://.import/hammerfish2.obj-00acda5ecde3cb5d02f197dae2eb3eb3.mesh" ]
+files=[ "res://.import/hammerfish2.obj-eff65f1a17e47eabdbdaa98d2f31f712.mesh" ]
 
-source_file="res://Models/hammerfish2.obj"
-dest_files=[ "res://.import/hammerfish2.obj-00acda5ecde3cb5d02f197dae2eb3eb3.mesh", "res://.import/hammerfish2.obj-00acda5ecde3cb5d02f197dae2eb3eb3.mesh" ]
+source_file="res://models/hammerfish2.obj"
+dest_files=[ "res://.import/hammerfish2.obj-eff65f1a17e47eabdbdaa98d2f31f712.mesh", "res://.import/hammerfish2.obj-eff65f1a17e47eabdbdaa98d2f31f712.mesh" ]
 
 [params]
 

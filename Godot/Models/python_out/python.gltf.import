@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/python.gltf-9a5085ef78a8a37479eac89f596fd149.scn"
+path="res://.import/python.gltf-0ac7c98de21aef5ce5213e8fcfeed90c.scn"
 
 [deps]
 
-source_file="res://Models/python_out/python.gltf"
-dest_files=[ "res://.import/python.gltf-9a5085ef78a8a37479eac89f596fd149.scn" ]
+source_file="res://models/python_out/python.gltf"
+dest_files=[ "res://.import/python.gltf-0ac7c98de21aef5ce5213e8fcfeed90c.scn" ]
 
 [params]
 

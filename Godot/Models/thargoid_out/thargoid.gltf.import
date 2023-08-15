@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/thargoid.gltf-a6e7e1c1e037e4373980746d466e7838.scn"
+path="res://.import/thargoid.gltf-046429499706c3df8468149e10cf49b6.scn"
 
 [deps]
 
-source_file="res://Models/thargoid_out/thargoid.gltf"
-dest_files=[ "res://.import/thargoid.gltf-a6e7e1c1e037e4373980746d466e7838.scn" ]
+source_file="res://models/thargoid_out/thargoid.gltf"
+dest_files=[ "res://.import/thargoid.gltf-046429499706c3df8468149e10cf49b6.scn" ]
 
 [params]
 

@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/sidewinder.gltf-dc99a26f2342e1de257006b877c3b487.scn"
+path="res://.import/sidewinder.gltf-07db0dbdca7d758bb8a97e854cf783ca.scn"
 
 [deps]
 
-source_file="res://Models/sidewinder_out/sidewinder.gltf"
-dest_files=[ "res://.import/sidewinder.gltf-dc99a26f2342e1de257006b877c3b487.scn" ]
+source_file="res://models/sidewinder_out/sidewinder.gltf"
+dest_files=[ "res://.import/sidewinder.gltf-07db0dbdca7d758bb8a97e854cf783ca.scn" ]
 
 [params]
 

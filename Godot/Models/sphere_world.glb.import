@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/sphere_world.glb-42dc41cff8e9c93809ddd82478905f4c.scn"
+path="res://.import/sphere_world.glb-bf182e35bc96a1fecc632dac1908ac23.scn"
 
 [deps]
 
-source_file="res://Models/sphere_world.glb"
-dest_files=[ "res://.import/sphere_world.glb-42dc41cff8e9c93809ddd82478905f4c.scn" ]
+source_file="res://models/sphere_world.glb"
+dest_files=[ "res://.import/sphere_world.glb-bf182e35bc96a1fecc632dac1908ac23.scn" ]
 
 [params]
 
