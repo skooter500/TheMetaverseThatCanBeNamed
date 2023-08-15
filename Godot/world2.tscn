@@ -417,7 +417,6 @@ mesh = SubResource( 15 )
 material/0 = ExtResource( 21 )
 
 [node name="Player" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 script = ExtResource( 13 )
 speed = 10.0
 
@@ -425,7 +424,6 @@ speed = 10.0
 shape = SubResource( 12 )
 
 [node name="FPController" parent="Player" instance=ExtResource( 28 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.13334, -11.8629, -33.382 )
 
 [node name="Listener" type="Listener" parent="Player/FPController/ARVRCamera" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.13334, 10.0629, 33.382 )
