@@ -573,7 +573,7 @@ _global_script_class_icons={
 [application]
 
 config/name="The Metaverse That Can Be Named"
-run/main_scene="res://Basic Scene.tscn"
+run/main_scene="res://Recovery SCene.tscn"
 config/icon="res://behaviors/icon.png"
 
 [autoload]
@@ -668,6 +668,7 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
-quality/subsurface_scattering/quality=2
 quality/filters/msaa=6
+quality/subsurface_scattering/quality=2
